@@ -6,6 +6,7 @@ import {API_URL} from "../../api/const/API_URL";
 import {countUsersPerPage} from "../../consts/consts";
 import {fetchUsers} from "../../api/fetchUsers";
 import UiButton from "../ui/UiButton";
+import {useIsLoadingStore} from "../../store/isLoadingStore";
 
 type Props = {
 	order: string
@@ -16,11 +17,12 @@ const SortByRepositoriesCount = ({order, children}: Props) => {
 	const {inputValue} = useSearchStore(({inputValue}) => ({inputValue}))
 	const {dispatchUsers} = useUsersStore(({dispatchUsers}) => ({dispatchUsers}))
 	const {dispatchCurrentURL} = useNavigationStore(({dispatchCurrentURL}) => ({ dispatchCurrentURL}))
+	const {dispatchIsLoading} = useIsLoadingStore(({dispatchIsLoading}) => ({dispatchIsLoading}))
 
 	const clickHandler = () => {
 		const url = `${API_URL}?q=${inputValue}&sort=repositories&order=${order}&per_page=${countUsersPerPage}`
 		dispatchCurrentURL(url)
-		fetchUsers(url, dispatchUsers)
+		fetchUsers(url, dispatchUsers, dispatchIsLoading)
 	}
 
 	return (

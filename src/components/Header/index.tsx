@@ -1,20 +1,21 @@
 import React from 'react';
 import * as S from '../../styles/headerStyles'
-import {useNavigationStore} from "../../store/navigationStore";
 import Search from "./Search";
 import Logo from "../svg/Logo";
 import UiButton from "../ui/UiButton";
 import {useNavigate} from "react-router-dom";
 import SortByRepositoriesCount from "./SortByRepositoriesCount";
 
-const Header = () => {
+type Props = {
+	isMainPage:boolean
+}
 
-	const {isMainPage, dispatchIsMainPage} = useNavigationStore(({isMainPage, dispatchIsMainPage}) => ({isMainPage, dispatchIsMainPage}))
+const Header = ({isMainPage}: Props) => {
+
 	const navigate = useNavigate()
 
 	const backToMainPage = () => {
 		navigate('/')
-		dispatchIsMainPage(true)
 	}
 
 	return (

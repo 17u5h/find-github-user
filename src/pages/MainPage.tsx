@@ -2,10 +2,14 @@ import React from 'react';
 import Header from "../components/Header";
 import CardList from '../components/MainPageBody';
 
-const MainPage = () => {
+type Props = {
+	isMainPage:boolean
+}
+
+const MainPage = ({isMainPage}: Props) => {
 	return (
 		<>
-			<Header/>
+			<Header isMainPage={isMainPage}/>
 			<CardList/>
 		</>
 	);

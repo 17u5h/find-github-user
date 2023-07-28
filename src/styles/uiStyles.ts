@@ -27,3 +27,9 @@ export const UiButton = styled.button`
 		font-size: ${vars.$fontsizeRegular};
 	}
 `
+export const LoadingContainer = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+`

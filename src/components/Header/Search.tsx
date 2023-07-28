@@ -7,27 +7,29 @@ import {useNavigationStore} from "../../store/navigationStore";
 import {API_URL} from "../../api/const/API_URL";
 import {countUsersPerPage} from "../../consts/consts";
 import {fetchUsers} from "../../api/fetchUsers";
+import {useIsLoadingStore} from "../../store/isLoadingStore";
 
 const Search = () => {
 
 	const {inputValue, dispatchInputValue} = useSearchStore(({inputValue, dispatchInputValue}) => ({inputValue, dispatchInputValue}))
 	const {dispatchUsers} = useUsersStore(({dispatchUsers}) => ({dispatchUsers}))
-	const { dispatchCurrentURL} = useNavigationStore(({dispatchCurrentURL}) => ({dispatchCurrentURL}))
-
+	const {dispatchCurrentURL} = useNavigationStore(({dispatchCurrentURL}) => ({dispatchCurrentURL}))
+	const {dispatchIsLoading} = useIsLoadingStore(({dispatchIsLoading}) => ({dispatchIsLoading}))
 
 	const letsSearch = () => {
 		const url = `${API_URL}?q=${inputValue}&per_page=${countUsersPerPage}`
 		dispatchCurrentURL(url)
-		fetchUsers(url, dispatchUsers)
+		fetchUsers(url, dispatchUsers, dispatchIsLoading)
 	}
 	const onPressEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
 		if (event.key === 'Enter') letsSearch()
 	}
 
-
 	return (
 		<S.SearchBlock>
-			<S.SearchField value={inputValue} onChange={(e) => dispatchInputValue(e.target.value)} onKeyDown={onPressEnter}
+			<S.SearchField value={inputValue}
+										 onChange={(e) => dispatchInputValue(e.target.value)}
+										 onKeyDown={onPressEnter}
 										 placeholder='Поиск по логину...'></S.SearchField>
 			<UiButton onClick={letsSearch}>
 				Искать

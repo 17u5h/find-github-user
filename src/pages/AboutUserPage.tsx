@@ -2,12 +2,14 @@ import React from 'react';
 import Header from "../components/Header";
 import AboutUser from "../components/AboutUser";
 
-const AboutUserPage = () => {
+type Props = {
+	isMainPage:boolean
+}
 
-
+const AboutUserPage = ({isMainPage}: Props) => {
 	return (
 		<>
-			<Header/>
+			<Header isMainPage={isMainPage}/>
 			<AboutUser/>
 		</>
 	);
