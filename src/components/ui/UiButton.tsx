@@ -4,6 +4,7 @@ import * as S from '../../styles/uiStyles'
 type Props = {
 	onClick: () => void
 	children: string
+	dataTestId?:number
 }
 
 const UiButton = ({ onClick, children}: Props) => {

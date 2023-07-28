@@ -5,6 +5,7 @@ import {fetchUsers} from "../../api/fetchUsers";
 import {useUsersStore} from "../../store/usersStore";
 import * as S from "../../styles/commonStyles";
 import {useIsLoadingStore} from "../../store/isLoadingStore";
+import {createId} from "../../lib/createId";
 
 const PaginationComponent = () => {
 	const {currentURL} = useNavigationStore(({currentURL}) => ({currentURL}))
@@ -21,7 +22,7 @@ const PaginationComponent = () => {
 	}
 	for (let i = 1; i <= 10; i++) {
 		paginationItems.push(
-			<Pagination.Item key={i} onClick={() => handleClick(i)} active={i === currentPage}>
+			<Pagination.Item key={createId()} onClick={() => handleClick(i)} active={i === currentPage}>
 				{i}
 			</Pagination.Item>
 		)
