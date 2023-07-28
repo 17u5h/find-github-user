@@ -17,6 +17,7 @@ const Search = () => {
 	const {dispatchIsLoading} = useIsLoadingStore(({dispatchIsLoading}) => ({dispatchIsLoading}))
 
 	const letsSearch = () => {
+		if (!inputValue) dispatchUsers([])
 		const url = `${API_URL}?q=${inputValue}&per_page=${countUsersPerPage}`
 		dispatchCurrentURL(url)
 		fetchUsers(url, dispatchUsers, dispatchIsLoading, dispatchUsersAmount)
