@@ -13,18 +13,19 @@ export const UiButton = styled.button`
   border-radius: 10px;
   user-select: none;
   font-size: ${vars.$fontsizeBigger};
+  transition: background-color 0.3s ease-in;
 
   &:hover {
     background-color: #313bec;
   }
 
   &:active {
-    background-color: #202bea;
+    background-color: #1520d3;
   }
 
   &:disabled {
     background-color: #a6a6a6;
-		cursor: not-allowed;
+    cursor: not-allowed;
   }
 
   @media (max-width: 1100px) {

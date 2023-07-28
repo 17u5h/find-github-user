@@ -25,7 +25,7 @@ export const SearchField = styled.input`
   border-radius: 20px;
   padding-left: 20px;
 	font-size: ${vars.$fontsizeBigger};
-	transition: box-shadow 0.2s, outline 0.2s;
+	transition: box-shadow 0.2s, outline 0.2s ease-in;
 
   &:focus, &:hover {
     outline: 2px solid ${vars.$colorThemeSecondary};
