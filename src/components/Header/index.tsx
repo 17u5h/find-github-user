@@ -21,7 +21,7 @@ const Header = ({isMainPage}: Props) => {
 	return (
 		<S.Header>
 			<Logo onClick={backToMainPage}/>
-			{isMainPage ? <Search/> : <UiButton onClick={backToMainPage}>Назад</UiButton>}
+			{isMainPage ? <Search /> : <UiButton onClick={backToMainPage}>Назад</UiButton>}
 			<S.HeaderButtonsBlock>
 				<SortByRepositoriesCount order={'desc'}>много репозиториев</SortByRepositoriesCount>
 				<SortByRepositoriesCount order={'asc'}>мало репозиториев</SortByRepositoriesCount>

@@ -8,7 +8,7 @@ export const UiButton = styled.button`
   height: 5vh;
   padding: 0 1vw;
   color: #fff;
-  background-color: ${vars.$colorThemeSecondary}
+  background-color: ${vars.$colorThemeSecondary};
   border: none;
   border-radius: 10px;
   user-select: none;
@@ -24,7 +24,7 @@ export const UiButton = styled.button`
   }
 
   &:disabled {
-    background-color: ${vars.$colorThemeDisabled};
+    background-color: #a6a6a6;
     cursor: not-allowed;
   }
 

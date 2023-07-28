@@ -32,7 +32,7 @@ const Search = () => {
 										 onChange={(e) => dispatchInputValue(e.target.value)}
 										 onKeyDown={onPressEnter}
 										 placeholder='Поиск по логину...'></S.SearchField>
-			<UiButton onClick={letsSearch}>
+			<UiButton onClick={letsSearch} disabled={false}>
 				Искать
 			</UiButton>
 		</S.SearchBlock>
