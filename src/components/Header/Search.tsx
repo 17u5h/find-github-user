@@ -12,14 +12,14 @@ import {useIsLoadingStore} from "../../store/isLoadingStore";
 const Search = () => {
 
 	const {inputValue, dispatchInputValue} = useSearchStore(({inputValue, dispatchInputValue}) => ({inputValue, dispatchInputValue}))
-	const {dispatchUsers} = useUsersStore(({dispatchUsers}) => ({dispatchUsers}))
+	const {dispatchUsers, dispatchUsersAmount} = useUsersStore(({dispatchUsers, dispatchUsersAmount}) => ({dispatchUsers, dispatchUsersAmount}))
 	const {dispatchCurrentURL} = useNavigationStore(({dispatchCurrentURL}) => ({dispatchCurrentURL}))
 	const {dispatchIsLoading} = useIsLoadingStore(({dispatchIsLoading}) => ({dispatchIsLoading}))
 
 	const letsSearch = () => {
 		const url = `${API_URL}?q=${inputValue}&per_page=${countUsersPerPage}`
 		dispatchCurrentURL(url)
-		fetchUsers(url, dispatchUsers, dispatchIsLoading)
+		fetchUsers(url, dispatchUsers, dispatchIsLoading, dispatchUsersAmount)
 	}
 	const onPressEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
 		if (event.key === 'Enter') letsSearch()

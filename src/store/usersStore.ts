@@ -6,6 +6,8 @@ type UsersStore = {
 	dispatchUsers: (users: User[]) => void
 	aboutUser: User | null
 	dispatchAboutUser: (user: User) => void
+	usersAmount: number
+	dispatchUsersAmount: (usersAmount: number) => void
 }
 
 export const useUsersStore = create<UsersStore>((set) => ({
@@ -20,5 +22,11 @@ export const useUsersStore = create<UsersStore>((set) => ({
 		set((state) => ({
 			...state,
 			aboutUser
+		})),
+	usersAmount: 0,
+	dispatchUsersAmount: (usersAmount: number) =>
+		set((state) => ({
+			...state,
+			usersAmount
 		})),
 }))

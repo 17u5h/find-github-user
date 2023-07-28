@@ -15,7 +15,7 @@ type Props = {
 
 const SortByRepositoriesCount = ({order, children}: Props) => {
 	const {inputValue} = useSearchStore(({inputValue}) => ({inputValue}))
-	const {users, dispatchUsers} = useUsersStore(({users, dispatchUsers}) => ({users, dispatchUsers}))
+	const {users, dispatchUsers, dispatchUsersAmount} = useUsersStore(({users, dispatchUsers, dispatchUsersAmount}) => ({users, dispatchUsers, dispatchUsersAmount}))
 	const {dispatchCurrentURL} = useNavigationStore(({dispatchCurrentURL}) => ({ dispatchCurrentURL}))
 	const {dispatchIsLoading} = useIsLoadingStore(({dispatchIsLoading}) => ({dispatchIsLoading}))
 	const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true)
@@ -23,7 +23,7 @@ const SortByRepositoriesCount = ({order, children}: Props) => {
 	const clickHandler = () => {
 		const url = `${API_URL}?q=${inputValue}&sort=repositories&order=${order}&per_page=${countUsersPerPage}`
 		dispatchCurrentURL(url)
-		fetchUsers(url, dispatchUsers, dispatchIsLoading)
+		fetchUsers(url, dispatchUsers, dispatchIsLoading, dispatchUsersAmount)
 	}
 	useEffect(() => {
 		users.length > 0 ? setIsButtonDisabled(false) : setIsButtonDisabled(true)
