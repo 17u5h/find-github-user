@@ -3,7 +3,7 @@ import {Route, Routes} from "react-router-dom";
 
 import MainPage from "../pages/MainPage";
 import NotFound from "../pages/NotFound";
-import UserPage from "../pages/UserPage";
+import AboutUserPage from "../pages/AboutUserPage";
 
 
 const AppRoutes = () => {
@@ -11,7 +11,7 @@ const AppRoutes = () => {
 	return (
 		<Routes>
 			<Route path="/" element={<MainPage/>}></Route>
-			<Route path="/user/:id" element={<UserPage/>}/>
+			<Route path="/about-user" element={<AboutUserPage/>}/>
 
 			<Route path="*" element={<NotFound/>}/>
 		</Routes>
