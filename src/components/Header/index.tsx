@@ -2,11 +2,10 @@ import React from 'react';
 import * as S from '../../styles/headerStyles'
 import {useNavigationStore} from "../../store/navigationStore";
 import Search from "./Search";
-import SortRepMaxToMin from "./SortRepMaxToMin";
-import SortRepMinToMax from "./SortRepMinToMax";
 import Logo from "../svg/Logo";
 import UiButton from "../ui/UiButton";
 import {useNavigate} from "react-router-dom";
+import SortByRepositoriesCount from "./SortByRepositoriesCount";
 
 const Header = () => {
 
@@ -20,11 +19,11 @@ const Header = () => {
 
 	return (
 		<S.Header>
-			<Logo/>
+			<Logo onClick={backToMainPage}/>
 			{isMainPage ? <Search/> : <UiButton onClick={backToMainPage}>Назад</UiButton>}
 			<S.HeaderButtonsBlock>
-				<SortRepMaxToMin/>
-				<SortRepMinToMax/>
+				<SortByRepositoriesCount order={'desc'}>много репозиториев</SortByRepositoriesCount>
+				<SortByRepositoriesCount order={'asc'}>мало репозиториев</SortByRepositoriesCount>
 			</S.HeaderButtonsBlock>
 		</S.Header>
 	);

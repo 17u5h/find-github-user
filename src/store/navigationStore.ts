@@ -1,8 +1,10 @@
 import {create} from "zustand";
 
 type NavigationStore = {
-	isMainPage: boolean,
+	isMainPage: boolean
 	dispatchIsMainPage: (isMainPage: boolean) => void
+	currentURL: string
+	dispatchCurrentURL: (currentURL: string) => void
 }
 
 export const useNavigationStore = create<NavigationStore>((set) => ({
@@ -11,5 +13,11 @@ export const useNavigationStore = create<NavigationStore>((set) => ({
 		set((state) => ({
 			...state,
 			isMainPage
+		})),
+	currentURL: '',
+	dispatchCurrentURL: (currentURL: string) =>
+		set((state) => ({
+			...state,
+			currentURL
 		})),
 }))

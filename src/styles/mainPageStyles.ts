@@ -5,6 +5,11 @@ type Props = {
 	$avatar_url?: string
 }
 
+export const Wrapper = styled.div`
+  max-width: 1440px;
+  margin: auto;
+`
+
 export const CardListContainer = styled.div`
 	display: flex;
 	justify-content: center;

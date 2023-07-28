@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-  max-width: 1440px;
-  margin: auto;
+export const PaginationContainer = styled.div`
+	margin-top: 4vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
 `
