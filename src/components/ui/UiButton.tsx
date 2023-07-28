@@ -4,13 +4,13 @@ import * as S from '../../styles/uiStyles'
 type Props = {
 	onClick: () => void
 	children: string
-	dataTestId?:number
+	disabled?: boolean
 }
 
-const UiButton = ({ onClick, children}: Props) => {
+const UiButton = ({ onClick, children, disabled}: Props) => {
 
 	return (
-		<S.UiButton onClick={onClick}>
+		<S.UiButton onClick={onClick} disabled={disabled}>
 			{children}
 		</S.UiButton>
 	)

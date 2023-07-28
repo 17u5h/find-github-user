@@ -9,23 +9,27 @@ export const UiButton = styled.button`
   padding: 0 1vw;
   color: #fff;
   background-color: #565EEF;
-	border: none;
+  border: none;
   border-radius: 10px;
   user-select: none;
   font-size: ${vars.$fontsizeBigger};
-	
+
   &:hover {
     background-color: #313bec;
   }
+
   &:active {
     background-color: #202bea;
   }
+
   &:disabled {
-    background-color: #d9d9d9;
+    background-color: #a6a6a6;
+		cursor: not-allowed;
   }
-	@media (max-width: 1100px) {
-		font-size: ${vars.$fontsizeRegular};
-	}
+
+  @media (max-width: 1100px) {
+    font-size: ${vars.$fontsizeRegular};
+  }
 `
 export const LoadingContainer = styled.div`
 	display: flex;
