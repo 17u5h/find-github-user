@@ -10,12 +10,21 @@ export const Wrapper = styled.div`
   margin: auto;
 `
 
+export const MainPagePlaceholder = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	font-size: 40px;
+	color: ${vars.$colorThemeSecondary};
+`
+
 export const CardListContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
 	gap: 20px;
-	padding-top: 10vh;
+	padding-top: 12vh;
 `
 
 export const CardContainer = styled.div`
