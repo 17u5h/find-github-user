@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import Header from "../components/Header";
 import CardList from '../components/MainPageBody';
 
@@ -7,10 +7,16 @@ type Props = {
 }
 
 const MainPage = ({isMainPage}: Props) => {
+	const searchRef = useRef<HTMLInputElement>(null)
+
+	const focusInput = () => {
+		searchRef.current?.focus()
+	}
+
 	return (
 		<>
-			<Header isMainPage={isMainPage}/>
-			<CardList/>
+			<Header ref={searchRef} isMainPage={isMainPage}/>
+			<CardList onClick={focusInput}/>
 		</>
 	);
 };

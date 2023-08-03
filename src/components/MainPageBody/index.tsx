@@ -6,24 +6,31 @@ import PaginationComponent from "../ui/PaginationComponent";
 import {useIsLoadingStore} from "../../store/isLoadingStore";
 import Loading from "../ui/Loading";
 
-const CardList = () => {
-	const {users} = useUsersStore(({users}) => ({users}))
-	const {isLoading} = useIsLoadingStore(({isLoading}) => ({isLoading}))
-	const [isPlaceholder, setIsPlaceholder]  = useState<boolean>(true)
+type Props = {
+	onClick: () => void
+}
 
-	useEffect(() => {
-		users.length <= 0 ? setIsPlaceholder(true) : setIsPlaceholder(false)
-	},[users])
+const CardList = ({onClick}: Props) =>
+	{
+		const {users} = useUsersStore(({users}) => ({users}))
+		const {isLoading} = useIsLoadingStore(({isLoading}) => ({isLoading}))
+		const [isPlaceholder, setIsPlaceholder]  = useState<boolean>(true)
 
-	return (
-		<S.Wrapper>
-			{isPlaceholder ? <S.MainPagePlaceholder>Пользователи github'a</S.MainPagePlaceholder> :
-			isLoading ? <Loading/> : <S.CardListContainer>
-				{users.map(el => (<Card key={el.id} user={el}/>))}
-			</S.CardListContainer>}
-			{users.length > 0 && <PaginationComponent/>}
-		</S.Wrapper>
-	);
-};
+
+		useEffect(() => {
+			users.length <= 0 ? setIsPlaceholder(true) : setIsPlaceholder(false)
+		},[users])
+
+		return (
+			<S.Wrapper>
+				{isPlaceholder ? <S.MainPagePlaceholder onClick={onClick}>Искать пользователей github</S.MainPagePlaceholder> :
+					isLoading ? <Loading/> : <S.CardListContainer>
+						{users.map(el => (<Card key={el.id} user={el}/>))}
+					</S.CardListContainer>}
+				{users.length > 0 && <PaginationComponent/>}
+			</S.Wrapper>
+		);
+	};
+
 
 export default CardList;

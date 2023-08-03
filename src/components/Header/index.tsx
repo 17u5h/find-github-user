@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ForwardedRef, forwardRef} from 'react';
 import * as S from '../../styles/headerStyles'
 import Search from "./Search";
 import Logo from "../svg/Logo";
@@ -10,7 +10,7 @@ type Props = {
 	isMainPage:boolean
 }
 
-const Header = ({isMainPage}: Props) => {
+const Header = forwardRef(({isMainPage}: Props, ref: ForwardedRef<HTMLInputElement>) => {
 
 	const navigate = useNavigate()
 
@@ -21,13 +21,13 @@ const Header = ({isMainPage}: Props) => {
 	return (
 		<S.Header>
 			<Logo onClick={backToMainPage}/>
-			{isMainPage ? <Search /> : <UiButton onClick={backToMainPage}>Назад</UiButton>}
+			{isMainPage ? <Search ref={ref}/> : <UiButton onClick={backToMainPage}>Назад</UiButton>}
 			<S.HeaderButtonsBlock>
 				<SortByRepositoriesCount order={'desc'}>много репозиториев</SortByRepositoriesCount>
 				<SortByRepositoriesCount order={'asc'}>мало репозиториев</SortByRepositoriesCount>
 			</S.HeaderButtonsBlock>
 		</S.Header>
 	);
-};
+});
 
 export default Header;

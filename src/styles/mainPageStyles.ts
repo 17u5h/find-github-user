@@ -16,6 +16,7 @@ export const MainPagePlaceholder = styled.div`
 	align-items: center;
 	height: 100vh;
 	font-size: 40px;
+	cursor: pointer;
 	color: ${vars.$colorThemeSecondary};
 `
 

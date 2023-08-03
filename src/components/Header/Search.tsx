@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ForwardedRef, forwardRef} from 'react';
 import * as S from '../../styles/headerStyles'
 import UiButton from "../ui/UiButton";
 import {useSearchStore} from "../../store/searchStore";
@@ -9,7 +9,7 @@ import {countUsersPerPage} from "../../consts/consts";
 import {fetchUsers} from "../../api/fetchUsers";
 import {useIsLoadingStore} from "../../store/isLoadingStore";
 
-const Search = () => {
+const Search = forwardRef((props, ref: ForwardedRef<HTMLInputElement>) => {
 
 	const {inputValue, dispatchInputValue} = useSearchStore(({inputValue, dispatchInputValue}) => ({inputValue, dispatchInputValue}))
 	const {dispatchUsers, dispatchUsersAmount} = useUsersStore(({dispatchUsers, dispatchUsersAmount}) => ({dispatchUsers, dispatchUsersAmount}))
@@ -31,12 +31,14 @@ const Search = () => {
 			<S.SearchField value={inputValue}
 										 onChange={(e) => dispatchInputValue(e.target.value)}
 										 onKeyDown={onPressEnter}
-										 placeholder='Поиск по логину...'></S.SearchField>
+										 placeholder='Поиск по логину...'
+										 ref={ref}
+			/>
 			<UiButton onClick={letsSearch} disabled={false}>
 				Искать
 			</UiButton>
 		</S.SearchBlock>
 	);
-};
+});
 
 export default Search;
